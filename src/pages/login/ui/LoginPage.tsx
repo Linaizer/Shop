@@ -3,6 +3,9 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 
+const DEMO_USERNAME = "johnd"
+const DEMO_PASSWORD = "m38rmF$"
+
 export const LoginPage = () => {
     const { login, status } = useUserStore()
     const [username, setUsername] = useState('')
@@ -14,6 +17,12 @@ export const LoginPage = () => {
             navigate('/')
         }
     }, [status])
+
+    const handleDemoLogin = () => {
+        setUsername(DEMO_USERNAME)
+        setPassword(DEMO_PASSWORD)
+        login(DEMO_USERNAME, DEMO_PASSWORD)
+    }
 
     return (
         <div className="min-h-screen bg-zinc-950 flex">
@@ -62,13 +71,27 @@ export const LoginPage = () => {
                         />
                     </div>
 
-                    <button
-                        onClick={() => login(username, password)}
-                        disabled={status === 'loading'}
-                        className="bg-white text-zinc-900 rounded-full py-3 font-medium hover:bg-zinc-200 transition-colors disabled:opacity-50"
-                    >
-                        {status === 'loading' ? 'Signing in...' : 'Sign in'}
-                    </button>
+                    <div className="flex flex-col gap-3">
+                        <button
+                            onClick={() => login(username, password)}
+                            disabled={status === 'loading'}
+                            className="bg-white text-zinc-900 rounded-full py-3 font-medium hover:bg-zinc-200 transition-colors disabled:opacity-50"
+                        >
+                            {status === 'loading' ? 'Signing in...' : 'Sign in'}
+                        </button>
+
+                        <button
+                            onClick={handleDemoLogin}
+                            disabled={status === 'loading'}
+                            className="bg-zinc-800 text-zinc-300 rounded-full py-3 font-medium hover:bg-zinc-700 transition-colors disabled:opacity-50 border border-zinc-700"
+                        >
+                            Try Demo
+                        </button>
+                    </div>
+
+                    <p className="text-zinc-600 text-xs text-center">
+                        Demo uses a public test API — data is shared and resets periodically
+                    </p>
                 </motion.div>
             </div>
         </div>

@@ -56,11 +56,8 @@ export const ProductPage = () => {
                             <span className="text-4xl font-bold">${selectedProductById.price}</span>
                             <button className="bg-white text-zinc-900 px-8 py-3 rounded-full font-medium hover:bg-zinc-200 transition-colors cursor-pointer"
                                 onClick={() => {
-                                    console.log(selectedProductById)
                                     addToCart(selectedProductById)
-                                    console.log(useCartStore.getState().items)
                                 }}
-
                             >
                                 Add to Cart
                             </button>

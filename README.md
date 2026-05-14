@@ -2,6 +2,8 @@
 
 A universal e-commerce pet project built to practice modern frontend architecture and tooling.
 
+🌐 Live Demo: https://shop-tau-dun.vercel.app/login
+
 ---
 
 ## Tech Stack
